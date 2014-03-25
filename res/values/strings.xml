@@ -9,5 +9,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_capital_letter_selection">CapitalLetterSelection</string>
     <string name="title_activity_capital">CapitalA</string>
+    <string name="title_activity_capital_b">CapitalB</string>
+    <string name="title_activity_capital_c">CapitalC</string>
 
 </resources>

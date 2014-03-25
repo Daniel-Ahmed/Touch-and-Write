@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uk.ac.mdx.capital.letters.CapitalA"
+    tools:context="uk.ac.mdx.capital.letters.CapitalC"
     tools:ignore="MergeRootFrame" 
     
     android:background="@color/white">
@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:contentDescription="@string/LetterButtonContent"
-        android:src="@drawable/capital_a" />
+        android:src="@drawable/capital_c" />
 
 </RelativeLayout>
 

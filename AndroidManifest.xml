@@ -49,6 +49,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.mdx.CapitalLetterSelection" />
         </activity>
+        <activity
+            android:name="uk.ac.mdx.capital.letters.CapitalB"
+            android:label="@string/title_activity_capital_b"
+            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.mdx.CapitalLetterSelection" />
+        </activity>
+        <activity
+            android:name="uk.ac.mdx.capital.letters.CapitalC"
+            android:label="@string/title_activity_capital_c"
+            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.mdx.CapitalLetterSelection" />
+        </activity>
     </application>
 
 </manifest>
