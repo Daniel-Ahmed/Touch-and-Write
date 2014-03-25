@@ -19,5 +19,15 @@
         android:contentDescription="@string/imageContentDescription"
         android:src="@drawable/title" />
 
+    <ImageButton
+        android:id="@+id/button_capital_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appNameImage"
+        android:layout_marginTop="150dp"
+        android:layout_toRightOf="@+id/appNameImage"
+        android:background="@null"
+        android:src="@drawable/img_button_capital_a" />
+
 </RelativeLayout>
 
