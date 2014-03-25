@@ -24,10 +24,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LowerLetterSelectionActivity"
+            android:name="uk.ac.mdx.LowerLetterSelectionActivity"
             android:label="@string/title_activity_lower_letter_selection"
+            android:parentActivityName="uk.ac.mdx.MainMenuActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.mdx.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name="uk.ac.mdx.CapitalLetterSelection"
+            android:label="@string/title_activity_capital_letter_selection"
             android:parentActivityName="uk.ac.mdx.MainMenuActivity" 
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.mdx.MainMenuActivity" />
