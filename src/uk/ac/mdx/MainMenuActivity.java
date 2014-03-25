@@ -27,15 +27,15 @@ public class MainMenuActivity extends Activity {
 		});
 		
 		// Start Upper Case Letters Activity
-				ImageButton upperCaseButton = (ImageButton)findViewById(R.id.UpperCaseLettersButton);
-				upperCaseButton.setOnClickListener(new OnClickListener() {
+		ImageButton upperCaseButton = (ImageButton)findViewById(R.id.UpperCaseLettersButton);
+		upperCaseButton.setOnClickListener(new OnClickListener() {
 					
-					@Override
-					public void onClick(View v) {
-						Intent intent = new Intent(MainMenuActivity.this, CapitalLetterSelection.class);
-						startActivity(intent);
-						
-					}
-				});
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(MainMenuActivity.this, CapitalLetterSelection.class);
+				startActivity(intent);
+				
+			}
+		});
 	}
 }

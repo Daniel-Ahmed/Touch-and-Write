@@ -20,7 +20,7 @@
         android:src="@drawable/title" />
 
     <ImageButton
-        android:id="@+id/button_a"
+        android:id="@+id/button_A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/appNameImage"
@@ -31,22 +31,22 @@
         android:src="@drawable/img_button_capital_a" />
 
     <ImageButton
-        android:id="@+id/ImageButton01"
+        android:id="@+id/Button_B"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button_a"
+        android:layout_alignTop="@+id/button_A"
         android:layout_centerHorizontal="true"
         android:background="@null"
         android:contentDescription="@string/LetterButtonContent"
         android:src="@drawable/img_button_capital_b" />
 
     <ImageButton
-        android:id="@+id/ImageButton02"
+        android:id="@+id/Button_C"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="34dp"
-        android:layout_toRightOf="@+id/ImageButton01"
+        android:layout_toRightOf="@+id/Button_B"
         android:background="@null"
         android:contentDescription="@string/LetterButtonContent"
         android:src="@drawable/img_button_capital_c" />

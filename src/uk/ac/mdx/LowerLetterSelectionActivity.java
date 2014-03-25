@@ -14,7 +14,7 @@ public class LowerLetterSelectionActivity extends Activity {
 		setContentView(R.layout.activity_lower_letter_selection);
 		
 		// Letter A
-		ImageButton LetterAButton = (ImageButton)findViewById(R.id.button_a);
+		ImageButton LetterAButton = (ImageButton)findViewById(R.id.button_A);
 		LetterAButton.setOnClickListener(new OnClickListener() {
 			
 			@Override

@@ -1,12 +1,12 @@
 package uk.ac.mdx;
 
-import android.os.Bundle;
+import uk.ac.mdx.capital.letters.CapitalA;
 import android.app.Activity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.support.v4.app.NavUtils;
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 public class CapitalLetterSelection extends Activity {
 
@@ -14,6 +14,19 @@ public class CapitalLetterSelection extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_capital_letter_selection);
+		
+		// A Button
+		ImageButton imgBtnA = (ImageButton)findViewById(R.id.button_A);
+		imgBtnA.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				Intent intent = new Intent(CapitalLetterSelection.this, CapitalA.class);
+				startActivity(intent);
+				
+			}
+		});
 	}
 
 }

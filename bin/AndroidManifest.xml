@@ -35,11 +35,19 @@
         <activity
             android:name="uk.ac.mdx.CapitalLetterSelection"
             android:label="@string/title_activity_capital_letter_selection"
-            android:parentActivityName="uk.ac.mdx.MainMenuActivity" 
+            android:parentActivityName="uk.ac.mdx.MainMenuActivity"
             android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.mdx.MainMenuActivity" />
+        </activity>
+        <activity
+            android:name="uk.ac.mdx.capital.letters.CapitalA"
+            android:label="@string/title_activity_capital"
+            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="uk.ac.mdx.CapitalLetterSelection" />
         </activity>
     </application>
 
