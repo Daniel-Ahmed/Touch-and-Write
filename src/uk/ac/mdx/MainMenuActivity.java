@@ -8,7 +8,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 
 public class MainMenuActivity extends Activity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,5 +37,17 @@ public class MainMenuActivity extends Activity {
 				
 			}
 		});
+	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
 	}
 }

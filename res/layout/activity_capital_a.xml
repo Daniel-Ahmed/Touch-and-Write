@@ -3,10 +3,9 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context="uk.ac.mdx.capital.letters.CapitalA"
-    tools:ignore="MergeRootFrame" 
-    
-    android:background="@color/white">
+    tools:ignore="MergeRootFrame" >
 
     <ImageView
         android:id="@+id/appNameImage"
@@ -20,7 +19,7 @@
         android:src="@drawable/title" />
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/image_A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -28,5 +27,23 @@
         android:contentDescription="@string/LetterButtonContent"
         android:src="@drawable/capital_a" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageCircle"
+        android:layout_marginLeft="129dp"
+        android:layout_toRightOf="@+id/image_A"
+        android:text="X = | Y =" />
 
+    <ImageView
+        android:id="@+id/imageCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/image_A"
+        android:layout_alignTop="@+id/image_A"
+        android:layout_marginLeft="97dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/circle" />
+
+</RelativeLayout>

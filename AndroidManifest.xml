@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -44,7 +44,8 @@
         <activity
             android:name="uk.ac.mdx.capital.letters.CapitalA"
             android:label="@string/title_activity_capital"
-            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection" >
+            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.mdx.CapitalLetterSelection" />
@@ -52,7 +53,8 @@
         <activity
             android:name="uk.ac.mdx.capital.letters.CapitalB"
             android:label="@string/title_activity_capital_b"
-            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection" >
+            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.mdx.CapitalLetterSelection" />
@@ -60,7 +62,8 @@
         <activity
             android:name="uk.ac.mdx.capital.letters.CapitalC"
             android:label="@string/title_activity_capital_c"
-            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection" >
+            android:parentActivityName="uk.ac.mdx.CapitalLetterSelection"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="uk.ac.mdx.CapitalLetterSelection" />

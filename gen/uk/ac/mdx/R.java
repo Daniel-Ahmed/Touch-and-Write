@@ -15,11 +15,6 @@ public final class R {
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
-
-         Example customization of dimensions originally defined in res/values/dimens.xml
-         (such as screen margins) for screens with more than 820dp of available width. This
-         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
-    
          */
         public static final int activity_horizontal_margin=0x7f050000;
         public static final int activity_vertical_margin=0x7f050001;
@@ -28,26 +23,29 @@ public final class R {
         public static final int capital_a=0x7f020000;
         public static final int capital_b=0x7f020001;
         public static final int capital_c=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int img_button_a=0x7f020004;
-        public static final int img_button_b=0x7f020005;
-        public static final int img_button_c=0x7f020006;
-        public static final int img_button_capital_a=0x7f020007;
-        public static final int img_button_capital_b=0x7f020008;
-        public static final int img_button_capital_c=0x7f020009;
-        public static final int img_lower_case_letters=0x7f02000a;
-        public static final int img_upper_case_letters=0x7f02000b;
-        public static final int title=0x7f02000c;
+        public static final int circle=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int img_button_a=0x7f020005;
+        public static final int img_button_b=0x7f020006;
+        public static final int img_button_c=0x7f020007;
+        public static final int img_button_capital_a=0x7f020008;
+        public static final int img_button_capital_b=0x7f020009;
+        public static final int img_button_capital_c=0x7f02000a;
+        public static final int img_lower_case_letters=0x7f02000b;
+        public static final int img_upper_case_letters=0x7f02000c;
+        public static final int title=0x7f02000d;
     }
     public static final class id {
-        public static final int LowerCaseLettersButton=0x7f070006;
-        public static final int UpperCaseLettersButton=0x7f070007;
+        public static final int LowerCaseLettersButton=0x7f070008;
+        public static final int UpperCaseLettersButton=0x7f070009;
         public static final int appNameImage=0x7f070001;
-        public static final int button_A=0x7f070003;
-        public static final int button_B=0x7f070004;
-        public static final int button_C=0x7f070005;
+        public static final int button_A=0x7f070005;
+        public static final int button_B=0x7f070006;
+        public static final int button_C=0x7f070007;
         public static final int container=0x7f070000;
-        public static final int imageView1=0x7f070002;
+        public static final int imageCircle=0x7f070004;
+        public static final int image_A=0x7f070002;
+        public static final int textView1=0x7f070003;
     }
     public static final class layout {
         public static final int activity_capital_a=0x7f030000;
