@@ -16,14 +16,13 @@ public class CapitalA extends Activity {
 	
 	ImageView circle;
 	TextView coordinates;
+	RelativeLayout.LayoutParams circleParams;
 	
-	private final int yCoOrdinate[] = {310, 360, 410, 460, 510, 560, 610, 660, 710, 780};
-	private final int xCoOrdinateFar[] = {905, 890, 875, 860, 845, 830, 815, 800, 785, 770};
+	private final int yCoordinates[] = {310, 360, 410, 460, 510, 560, 610, 660, 710, 775};
+	private final int xCoordinateLeft[] = {902, 887, 872, 857, 841, 826, 811, 796, 781, 767};
+	private final int xCoordinateRight[] = {925, 905, 895, 880, 865, 850, 840, 820, 800, 780};
 	
-	private final int yInsideTriangle[] = {425, 475, 525, 575};
-	private final int xLeftInsideTriangle[] = {890, 880, 870, 860};
-	
-	private final int xCoOrdinateRight[] = {990, 1005, 1020, 1035, 1050, 1065, 1080, 1095, 1110, 1125};
+	//private final int xCoOrdinateRight[] = {990, 1005, 1020, 1035, 1050, 1065, 1080, 1095, 1110, 1125};
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +30,8 @@ public class CapitalA extends Activity {
 		setContentView(R.layout.activity_capital_a);
 		
 		coordinates = (TextView)findViewById(R.id.textView1);
-		
 		circle = (ImageView)findViewById(R.id.imageCircle);
-		
-		Log.d("Setting Image", "Image Set at position x/y");
+		circleParams = (RelativeLayout.LayoutParams) circle.getLayoutParams();
 		
 		circle.setOnTouchListener(new OnTouchListener() {
 			
@@ -45,8 +42,6 @@ public class CapitalA extends Activity {
 				
 				switch (eventID) {
 				case MotionEvent.ACTION_MOVE:
-					
-					RelativeLayout.LayoutParams circleParams = (RelativeLayout.LayoutParams) circle.getLayoutParams();
 
 					// Get finger position
 					int x = (int)event.getRawX();
@@ -55,52 +50,41 @@ public class CapitalA extends Activity {
 					coordinates.setText("X = " + x + " - Y = " + y);
 					
 					
-					if ( y >= 360 && x == 895) {
+/*					if ( y >= 360 && x == 895) {
 						x = 893;
 					}
 					
 					// Left Side of A
-					for(int i = 0; i < yCoOrdinate.length; i++) {
+					for(int i = 0; i < yCoordinates.length; i++) {
 						
 						// Top of A
-						if(y <= yCoOrdinate[0]) {
-							y = yCoOrdinate[0];
+						if(y <= yCoordinates[0]) {
+							y = yCoordinates[0];
 						}
 						
-						// Bottom of A
-						if(y >= yCoOrdinate[9]) {
-							y = yCoOrdinate[9];
-						}
 						
 						// Left Boundaries
-						if(y == yCoOrdinate[0] && x <= xCoOrdinateFar[0]) {
-							x = xCoOrdinateFar[0];
-						} else if (y <= yCoOrdinate[i] && x <= xCoOrdinateFar[i]) {
-							y = yCoOrdinate[i];
-							x = xCoOrdinateFar[i];
+						if(y == yCoordinates[0] && x <= xCoordinateLeft[0]) {
+							x = xCoordinateLeft[0];
+						} else if (y <= yCoordinates[i] && x <= xCoordinateLeft[i]) {
+							y = yCoordinates[i];
+							x = xCoordinateLeft[i];
 						}
 						
-						// Move to Right side
-						if(x == xCoOrdinateFar[9] && y == yCoOrdinate[9]) {
-							x = 985;
-							y = yCoOrdinate[0];
-						}
+						
 						
 						// Right Boundaries
-						if(y == yCoOrdinate[0] && x >= xCoOrdinateRight[0]) {
+						if(y == yCoordinates[0] && x >= xCoOrdinateRight[0]) {
 							x = xCoOrdinateRight[0];
-						} else if (y <= yCoOrdinate[i] && x >= xCoOrdinateRight[i]) {
-							y = yCoOrdinate[i];
+						} else if (y <= yCoordinates[i] && x >= xCoOrdinateRight[i]) {
+							y = yCoordinates[i];
 							x = xCoOrdinateRight[i];
 						}
 						
-					}
+					}*/
 					
-					// Set image to finger position - its starting position.
-					circleParams.leftMargin = x - 730;
-					circleParams.topMargin = y - 290;
-                    
-					circle.setLayoutParams(circleParams);
+					moveImage(x, y);
+					
 					
 					break;
 					
@@ -112,5 +96,46 @@ public class CapitalA extends Activity {
 				return true;
 			}
 		});
+	}
+	
+	private void moveImage(int x, int y) {
+		
+		for(int i = 0; i < yCoordinates.length; i++) {
+			
+			// Collide with top outline
+			if(y <= yCoordinates[0]) {
+				y = yCoordinates[0];
+			}
+			
+			// Collide with left outline & Right outline
+			if(y == yCoordinates[0] && x <= xCoordinateLeft[0]) {			// Top left
+				x = xCoordinateLeft[0];
+			} else if (y <= yCoordinates[i] && x <= xCoordinateLeft[i]) { // Left outline
+				y = yCoordinates[i];
+				x = xCoordinateLeft[i];
+			} else if (y >= yCoordinates[i] && x >= xCoordinateRight[i]) {	// Right outline
+				x = xCoordinateRight[i];
+			}
+			
+			
+			// Bottom of A
+			if(y >= yCoordinates[9]) {
+				y = yCoordinates[9];
+			}
+			
+			// Collide with bottom and move To Right Section
+			// and give new xCoordinates
+			if(x == xCoordinateLeft[9] || x == xCoordinateRight[9] && y == yCoordinates[9]) {
+				x = 985;
+				y = yCoordinates[0];
+			}
+		}
+		
+		// Place image at spot
+		// Set image to finger position - its starting position.
+		circleParams.leftMargin = x - 730;
+		circleParams.topMargin = y - 290;
+        
+		circle.setLayoutParams(circleParams);
 	}
 }
