@@ -57,7 +57,7 @@ public class CapitalB extends Activity {
 							resetPosition();
 						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1070, 250, 1170, 360, 1170, 250)) { // Top Right Triangle
 							resetPosition();
-						} else if(isInTriangleBoundary(currentXPos, id, 1090, 780, 1160, 780, 1160, 755)) { // Bottom Right Triangle
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1070, 810, 1175, 710, 1175, 810)) { // Bottom Right Triangle
 							resetPosition();
 						}
 						
@@ -181,7 +181,7 @@ public class CapitalB extends Activity {
 	}
 
 	private void resetPosition() {
-		pointer.setX(810);
-		pointer.setY(325);
+		pointer.setX(770);
+		pointer.setY(315);
 	}
 }
