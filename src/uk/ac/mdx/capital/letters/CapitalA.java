@@ -8,139 +8,180 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class CapitalA extends Activity {
 
-	
-	ImageView circle;
-	TextView coordinates;
-	TextView mistakesText;
-	
-	RelativeLayout.LayoutParams circleParams;
-	
-	private final int yCoordinates[] = {310, 360, 410, 460, 510, 560, 610, 660, 710, 775};
-	private final int xCoordinateLeft[] = {902, 887, 872, 857, 841, 826, 811, 796, 781, 767};
-	
-	
-	private final int xCoordinateRight[] = {945, 945, 925, 910, 900, 890, 880, 870, 840, 840};
-	
-	private int mistakes = 0;
-	
-	//private final int xCoOrdinateRight[] = {990, 1005, 1020, 1035, 1050, 1065, 1080, 1095, 1110, 1125};
-	
+	private ImageView pointer;
+	private TextView text;
+
+	private int currentXPos;
+	private int currentYPos;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_capital_a);
 		
-		coordinates = (TextView)findViewById(R.id.textView1);
-		mistakesText = (TextView)findViewById(R.id.mistakesView);
+		pointer = (ImageView) findViewById(R.id.imageCircle);
+		text = (TextView) findViewById(R.id.textView1);
 		
-		circle = (ImageView)findViewById(R.id.imageCircle);
-		circleParams = (RelativeLayout.LayoutParams) circle.getLayoutParams();
-		
-		circle.setOnTouchListener(new OnTouchListener() {
+		pointer.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
 			public boolean onTouch(View v, MotionEvent event) {
 				
-				int eventID = event.getAction();
+				int id = event.getAction();
 				
-				switch (eventID) {
-				case MotionEvent.ACTION_MOVE:
-
-					// Get finger position
-					int x = (int)event.getRawX();
-					int y = (int)event.getRawY();
-					
-					coordinates.setText("X: " + x + "Y: " + y);
-					
-										
-/*					if ( y >= 360 && x == 895) {
-						x = 893;
-					}
-					
-					// Left Side of A
-					for(int i = 0; i < yCoordinates.length; i++) {
+				switch(id) {
+					case MotionEvent.ACTION_MOVE:
 						
-						// Top of A
-						if(y <= yCoordinates[0]) {
-							y = yCoordinates[0];
+						// Get position on screen
+						currentXPos = (int) event.getRawX();
+						currentYPos = (int) event.getRawY();
+						
+						// Set Image to that position
+						pointer.setX(currentXPos - (pointer.getWidth() / 2));
+						pointer.setY(currentYPos - (pointer.getHeight() / 2));
+						
+						text.setText("X: " + currentXPos + "Y: " + currentYPos);
+						
+						// In Image Boundaries
+						if(!inImgBoundaries((int)pointer.getX(), (int)pointer.getY())) {
+							resetPosition();
 						}
 						
-						
-						// Left Boundaries
-						if(y == yCoordinates[0] && x <= xCoordinateLeft[0]) {
-							x = xCoordinateLeft[0];
-						} else if (y <= yCoordinates[i] && x <= xCoordinateLeft[i]) {
-							y = yCoordinates[i];
-							x = xCoordinateLeft[i];
+						// Left Side
+						if(isInTriangleBoundary(currentXPos, currentYPos, 710, 830, 710, 260, 890, 260)) {
+							resetPosition();
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 960, 420, 910, 620, 1010, 620))  { // Middle Triangle
+							resetPosition();
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1030, 260, 1230, 260, 1230, 830)) { // Right Right
+							resetPosition();
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 870, 730, 870, 830, 835, 830)) { // Left of Rectangle
+							resetPosition();
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1050, 730, 1050, 830, 1080, 830)) { // Right of Rectangle
+							resetPosition();
 						}
 						
-						
-						
-						// Right Boundaries
-						if(y == yCoordinates[0] && x >= xCoOrdinateRight[0]) {
-							x = xCoOrdinateRight[0];
-						} else if (y <= yCoordinates[i] && x >= xCoOrdinateRight[i]) {
-							y = yCoordinates[i];
-							x = xCoOrdinateRight[i];
+						// Rectangle
+						if(isInRectangleBoundary(currentXPos, currentYPos, 880, 730, 1050, 730, 1050, 830, 880, 830)) {
+							resetPosition();
 						}
 						
-					}*/
-					
-					moveImage(x, y);
-					
-					
-					break;
-					
-				default:
-					break;
-					
+						break;
+						
+					default:
+						break;
 				}
 				
 				return true;
 			}
 		});
 	}
-	
-	private void moveImage(int x, int y) {
-		
-		// Top of Letter A
-		if(y <= 280) {
-			y = 280;
-		}
-		
-		// Bottom of Letter A
-		if(y >= 830) {
-			y = 830;
-		}
-		
-		if(x >= 850 && y >= 825) {
-			x = 850;
-			y = 825;
-		}
-		
-		if(x >= 855 && y >= 790) {
-			x = 855;
-			y = 790;
-		}
-		
-		if(x >= 860 && y >= 755) {
-			x = 845;
-			y = 790;
-		}
-		
-		// Set image to finger position - its starting position.
-		circleParams.leftMargin = x - 730;
-		circleParams.topMargin = y - 290;
-        
-		circle.setLayoutParams(circleParams);
+
+	/**
+	 * Calculates the area of the triangle with the given positions. //
+	 * http://www
+	 * .geeksforgeeks.org/check-whether-a-given-point-lies-inside-a-triangle
+	 * -or-not/
+	 * 
+	 */
+	private int triangleAreaCalc(int posX1, int posY1, int posX2, int posY2,
+			int posX3, int posY3) {
+		return Math
+				.abs((posX1 * (posY2 - posY3) + posX2 * (posY3 - posY1) + posX3
+						* (posY1 - posY2)) / 2);
 	}
 
-	public int getMistakes() {
-		return mistakes;
+	private boolean isInTriangleBoundary(int currentXPos, int currentYPos,
+			int aX, int aY, int bX, int bY, int cX, int cY) {
+
+		// Calculate Area of Triangle (A, B, C)
+		int area = triangleAreaCalc(aX, aY, bX, bY, cX, cY);
+
+		// Calculate Area of Triangle (Current Position, B, C)
+		int pbcArea = triangleAreaCalc(currentXPos, currentYPos, bX, bY, cX, cY);
+
+		// Calculate Area of Triangle (A, Current Position, C)
+		int pacArea = triangleAreaCalc(aX, aY, currentXPos, currentYPos, cX, cY);
+
+		// Calculate Area of Triangle (A, B, Current Position)
+		int pabArea = triangleAreaCalc(aX, aY, bX, bY, currentXPos, currentYPos);
+
+		return (area == pbcArea + pacArea + pabArea);
+	}
+
+	/**
+	 * Used to calculate the area of the rectangle.
+	 * <p>
+	 * The rectangles coordinates must be clockwise for this to work correctly.
+	 * </p>
+	 * 
+	 * <p>
+	 * A --- B
+	 * </p>
+	 * <p>
+	 * D --- C
+	 * </p>
+	 * 
+	 * @param aX
+	 *            - Coordinate start x
+	 * @param aY
+	 *            - Coordinate start y
+	 * @param bX
+	 *            - Second coordinate x
+	 * @param bY
+	 *            - Second coordinate y
+	 * @param cX
+	 *            - Third coordinate x
+	 * @param cY
+	 *            - Third coordinate y
+	 * @param dX
+	 *            - Last coordinate x
+	 * @param dY
+	 *            - Last coordinate y
+	 * @return area of rectangle
+	 */
+	private int rectangleAreaCalc(int aX, int aY, int bX, int bY, int cX,
+			int cY, int dX, int dY) {
+
+		int width = (aX - bX);
+		int height = (aY - dY);
+
+		int area = width * height;
+
+		return area;
+	}
+
+	private boolean isInRectangleBoundary(int currentXPos, int currentYPos,
+			int aX, int aY, int bX, int bY, int cX, int cY, int dX, int dY) {
+
+		int area = rectangleAreaCalc(aX, aY, bX, bY, cX, cY, dX, dY);
+
+		int apdArea = triangleAreaCalc(aX, aY, currentXPos, currentYPos, dX, dY);
+		int dpcArea = triangleAreaCalc(dX, dY, currentXPos, currentYPos, cX, cY);
+		int cpbArea = triangleAreaCalc(cX, cY, currentXPos, currentYPos, bX, bY);
+		int pbaArea = triangleAreaCalc(currentXPos, currentYPos, bX, bY, aX, aY);
+
+		if (area == apdArea + dpcArea + cpbArea + pbaArea) {
+			return true;
+		}
+
+		return false;
+	}
+
+	private boolean inImgBoundaries(int x, int y) {
+
+		if (y < 260 || y > 830 || x < 710 || x > 1230) {
+			return false;
+		}
+
+		return true;
+	}
+
+	private void resetPosition() {
+		pointer.setX(890);
+		pointer.setY(300);
 	}
 }

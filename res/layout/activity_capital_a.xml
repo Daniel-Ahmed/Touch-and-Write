@@ -38,24 +38,14 @@
         android:src="@drawable/circle" />
 
     <TextView
-        android:id="@+id/mistakesView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/appNameImage"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="72dp"
-        android:text="Mistakes: 0"
-        android:textColor="@color/darkGrey"
-        android:textSize="40sp" />
-
-    <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/appNameImage"
-        android:layout_below="@+id/image_A"
-        android:text="X = | Y ="
-        android:textColor="@color/darkGrey"
-        android:textSize="35sp" />
+        android:layout_below="@+id/imageCircle"
+        android:layout_marginLeft="74dp"
+        android:layout_marginTop="43dp"
+        android:text="TextView"
+        android:textColor="@color/darkGrey" />
 
 </RelativeLayout>
