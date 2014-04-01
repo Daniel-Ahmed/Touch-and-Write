@@ -37,15 +37,4 @@
         android:layout_marginTop="11dp"
         android:src="@drawable/circle" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/appNameImage"
-        android:layout_below="@+id/imageCircle"
-        android:layout_marginLeft="74dp"
-        android:layout_marginTop="43dp"
-        android:text="TextView"
-        android:textColor="@color/darkGrey" />
-
 </RelativeLayout>

@@ -13,7 +13,6 @@ import android.widget.TextView;
 public class CapitalA extends Activity {
 
 	private ImageView pointer;
-	private TextView text;
 
 	private int currentXPos;
 	private int currentYPos;
@@ -24,7 +23,6 @@ public class CapitalA extends Activity {
 		setContentView(R.layout.activity_capital_a);
 		
 		pointer = (ImageView) findViewById(R.id.imageCircle);
-		text = (TextView) findViewById(R.id.textView1);
 		
 		pointer.setOnTouchListener(new OnTouchListener() {
 			
@@ -43,8 +41,6 @@ public class CapitalA extends Activity {
 						// Set Image to that position
 						pointer.setX(currentXPos - (pointer.getWidth() / 2));
 						pointer.setY(currentYPos - (pointer.getHeight() / 2));
-						
-						text.setText("X: " + currentXPos + "Y: " + currentYPos);
 						
 						// In Image Boundaries
 						if(!inImgBoundaries((int)pointer.getX(), (int)pointer.getY())) {
