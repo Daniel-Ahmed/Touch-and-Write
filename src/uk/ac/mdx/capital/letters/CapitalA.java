@@ -23,7 +23,6 @@ public class CapitalA extends Activity {
 		setContentView(R.layout.activity_capital_a);
 		
 		pointer = (ImageView) findViewById(R.id.imageCircle);
-		
 		pointer.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -52,16 +51,16 @@ public class CapitalA extends Activity {
 							resetPosition();
 						} else if(isInTriangleBoundary(currentXPos, currentYPos, 960, 420, 910, 620, 1010, 620))  { // Middle Triangle
 							resetPosition();
-						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1030, 260, 1230, 260, 1230, 830)) { // Right Right
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1030, 260, 1220, 260, 1220, 800)) { // Right Right
 							resetPosition();
-						} else if(isInTriangleBoundary(currentXPos, currentYPos, 870, 730, 870, 830, 835, 830)) { // Left of Rectangle
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 870, 730, 870, 800, 835, 800)) { // Left of Rectangle
 							resetPosition();
-						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1050, 730, 1050, 830, 1080, 830)) { // Right of Rectangle
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1050, 730, 1050, 800, 1080, 800)) { // Right of Rectangle
 							resetPosition();
 						}
 						
 						// Rectangle
-						if(isInRectangleBoundary(currentXPos, currentYPos, 880, 730, 1050, 730, 1050, 830, 880, 830)) {
+						if(isInRectangleBoundary(currentXPos, currentYPos, 880, 730, 1050, 730, 1050, 840, 880, 840)) {
 							resetPosition();
 						}
 						
@@ -108,37 +107,6 @@ public class CapitalA extends Activity {
 		return (area == pbcArea + pacArea + pabArea);
 	}
 
-	/**
-	 * Used to calculate the area of the rectangle.
-	 * <p>
-	 * The rectangles coordinates must be clockwise for this to work correctly.
-	 * </p>
-	 * 
-	 * <p>
-	 * A --- B
-	 * </p>
-	 * <p>
-	 * D --- C
-	 * </p>
-	 * 
-	 * @param aX
-	 *            - Coordinate start x
-	 * @param aY
-	 *            - Coordinate start y
-	 * @param bX
-	 *            - Second coordinate x
-	 * @param bY
-	 *            - Second coordinate y
-	 * @param cX
-	 *            - Third coordinate x
-	 * @param cY
-	 *            - Third coordinate y
-	 * @param dX
-	 *            - Last coordinate x
-	 * @param dY
-	 *            - Last coordinate y
-	 * @return area of rectangle
-	 */
 	private int rectangleAreaCalc(int aX, int aY, int bX, int bY, int cX,
 			int cY, int dX, int dY) {
 
@@ -169,7 +137,7 @@ public class CapitalA extends Activity {
 
 	private boolean inImgBoundaries(int x, int y) {
 
-		if (y < 260 || y > 830 || x < 710 || x > 1230) {
+		if (y <= 260 || y >= 800 || x <= 710 || x >= 1180) {
 			return false;
 		}
 

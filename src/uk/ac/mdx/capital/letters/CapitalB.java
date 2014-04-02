@@ -3,6 +3,7 @@ package uk.ac.mdx.capital.letters;
 import uk.ac.mdx.R;
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -12,8 +13,6 @@ import android.widget.TextView;
 public class CapitalB extends Activity {
 
 	private ImageView pointer;
-	
-	private TextView coordinates;
 
 	private int currentXPos;
 	private int currentYPos;
@@ -24,9 +23,6 @@ public class CapitalB extends Activity {
 		setContentView(R.layout.activity_capital_b);
 
 		pointer = (ImageView) findViewById(R.id.imageCircle);
-		
-		coordinates = (TextView) findViewById(R.id.textView1);
-		
 		pointer.setOnTouchListener(new OnTouchListener() {
 			
 			@Override
@@ -41,8 +37,6 @@ public class CapitalB extends Activity {
 						currentXPos = (int) event.getRawX();
 						currentYPos = (int) event.getRawY();
 						
-						coordinates.setText("X: " + currentXPos + " Y: " + currentYPos);
-						
 						// Set Image to that position
 						pointer.setX(currentXPos - (pointer.getWidth() / 2));
 						pointer.setY(currentYPos - (pointer.getHeight() / 2));
@@ -53,21 +47,20 @@ public class CapitalB extends Activity {
 						}
 						
 						// Middle Triangle
-						if(isInTriangleBoundary(currentXPos, currentYPos, 1070, 535, 1175, 455, 1175, 600)){
+						if(isInTriangleBoundary(currentXPos, currentYPos, 1070, 530, 1170, 460, 1170, 600)){
 							resetPosition();
 						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1070, 250, 1170, 360, 1170, 250)) { // Top Right Triangle
 							resetPosition();
-						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1070, 810, 1175, 710, 1175, 810)) { // Bottom Right Triangle
+						} else if(isInTriangleBoundary(currentXPos, currentYPos, 1070, 810, 1170, 710, 1170, 810)) { // Bottom Right Triangle
 							resetPosition();
 						}
 						
 						// Inside Rectangle
-						if(isInRectangleBoundary(currentXPos, currentYPos, 870, 360, 980, 360, 980, 500, 870, 500)) {
+						if(isInRectangleBoundary(currentXPos, currentYPos, 870, 360, 1020, 360, 1020, 500, 870, 500)) { // Top Rectangle
 							resetPosition();
-						} else if (isInRectangleBoundary(currentXPos, currentYPos, 870, 600, 980, 600, 980, 750, 870, 750)) {
+						} else if (isInRectangleBoundary(currentXPos, currentYPos, 870, 600, 1040, 600, 1040, 750, 870, 750)) { // Bottom Rectangle
 							resetPosition();
 						}
-		
 						
 						break;
 						
@@ -170,7 +163,7 @@ public class CapitalB extends Activity {
 
 		return false;
 	}
-
+	
 	private boolean inImgBoundaries(int x, int y) {
 
 		if (y <= 250 || y >= 790 || x <= 735 || x >= 1150) {

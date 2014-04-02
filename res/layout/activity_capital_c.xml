@@ -20,13 +20,23 @@
         android:src="@drawable/title" />
 
     <ImageView
-        android:id="@+id/imageCircle"
+        android:id="@+id/capital_letter_b"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:contentDescription="@string/LetterButtonContent"
         android:src="@drawable/capital_c" />
+
+    <ImageView
+        android:id="@+id/imageCircle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/capital_letter_b"
+        android:layout_alignTop="@+id/capital_letter_b"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="73dp"
+        android:src="@drawable/circle" />
 
 </RelativeLayout>
 
