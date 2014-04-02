@@ -57,14 +57,12 @@ public class CapitalC extends Activity {
 						}
 						
 						// Inside Rectangle
-						if(isInRectangleBoundary(currentXPos, currentYPos, 870, 360, 1070, 360, 1070, 470, 870, 470)) { // C Top Rectangle
+						if(isInRectangleBoundary(currentXPos, currentYPos, 870, 360, 1060, 360, 1060, 470, 870, 470)) { // C Top Rectangle
 							resetPosition();
 						} else if (isInRectangleBoundary(currentXPos, currentYPos, 870, 470, 1170, 470, 1170, 620, 870, 620)) { // C Middle Right Rectangle
 							resetPosition();
-							Log.d("test", "Inside middle..");
-						} else if (isInRectangleBoundary(currentXPos, currentYPos, 870, 640, 1080, 640, 1080, 750, 870, 750)) { // C Bottom Rectangle
+						} else if (isInRectangleBoundary(currentXPos, currentYPos, 870, 640, 1060, 640, 1060, 740, 870, 740)) { // C Bottom Rectangle
 							resetPosition();
-							Log.d("test", "Inside bottom..");
 						}
 						
 						break;
